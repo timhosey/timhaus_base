@@ -1,11 +1,10 @@
-# timhaus_base CHANGELOG
+# timhaus_base Changelog
 
-This file is used to list changes made in each version of the timhaus_base cookbook.
+Below is a historical runthrough of changes.
 
 # 0.1.0
 
 Initial release.
 
-- change 0
-- change 1
-
+- Base cookbook using `chef-client` cookbook as a dependency
+- Attributes and recipes determined by environment

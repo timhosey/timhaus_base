@@ -14,3 +14,6 @@ run_list 'timhaus_base::default'
 
 # Specify a custom source for a single cookbook:
 cookbook 'timhaus_base', path: '.'
+
+# Cookbook dependencies
+cookbook 'chef-client', '~> 11.4.0', :supermarket
