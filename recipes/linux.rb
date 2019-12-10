@@ -10,6 +10,13 @@ package 'portmap'
 
 # Kludgey but necessary
 if node['name'] != 'storagepi'
+  directory '/disks' do
+    owner 'pi'
+    group 'pi'
+    mode '0755'
+    action :create
+  end
+
   directory '/disks/Torrents' do
     owner 'pi'
     group 'pi'

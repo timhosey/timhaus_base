@@ -2,6 +2,10 @@
 
 Below is a historical runthrough of changes.
 
+# 0.1.2
+
+- Tweaked to created `/disks` if it doesn't exist
+
 # 0.1.1
 
 - Added `linux.rb` recipe that installs needed packages and mounts NFS shares
