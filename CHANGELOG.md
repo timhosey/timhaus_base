@@ -2,6 +2,11 @@
 
 Below is a historical runthrough of changes.
 
+# 0.1.5
+
+- Had to scrap using NFS for the shares and went with the SMB shares
+- Added data bag and referenced it
+
 # 0.1.4
 
 - Updated frequency to minutes for Windows

@@ -4,20 +4,18 @@
 #
 # Copyright:: 2019, Tim Hosey, All Rights Reserved.
 
-windows_feature 'NFS-Client' do
-  action :install
-  install_method :windows_feature_powershell
-end
-
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default' do
-  values [
-    { name: 'AnonymousUid', type: :dword, data: '1000' },
-    { name: 'AnonymousGid', type: :dword, data: '1000' },
-  ]
-  action :create
-end
+creds = data_bag('creds')
 
 mount 'T:' do
   action :mount
-  device 'storagepi.tim.haus:/disks/Torrents'
+  device '\\\\storagepi.tim.haus\\Completed Torrents'
+  username creds['linux_user']['username']
+  password creds['linux_user']['pass']
+end
+
+mount 'U:' do
+  action :mount
+  device '\\\\storagepi.tim.haus\\Torrent Drop'
+  username creds['linux_user']['username']
+  password creds['linux_user']['pass']
 end
