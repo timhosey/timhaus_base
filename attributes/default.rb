@@ -6,5 +6,5 @@ when 'raspbian', 'ubuntu'
 when 'mac_os_x'
   default['chef_client']['init_style'] = 'none'
 when 'windows'
-  default['chef_client']['task']['frequency'] = 'hourly'
+  default['chef_client']['task']['frequency'] = 'minute'
 end

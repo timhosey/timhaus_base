@@ -2,6 +2,10 @@
 
 Below is a historical runthrough of changes.
 
+# 0.1.4
+
+- Updated frequency to minutes for Windows
+
 # 0.1.3
 
 - Added `windows.rb` recipe to configure Windows boxes
