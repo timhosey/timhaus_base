@@ -2,6 +2,10 @@
 
 Below is a historical runthrough of changes.
 
+# 0.1.3
+
+- Added `windows.rb` recipe to configure Windows boxes
+
 # 0.1.2
 
 - Tweaked to created `/disks` if it doesn't exist

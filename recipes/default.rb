@@ -14,4 +14,5 @@ when 'mac_os_x'
   include_recipe 'chef-client::cron'
 when 'windows'
   include_recipe 'chef-client::task'
+  include_recipe 'timhaus_base::windows'
 end
