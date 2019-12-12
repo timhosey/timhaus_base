@@ -4,18 +4,18 @@
 #
 # Copyright:: 2019, Tim Hosey, All Rights Reserved.
 
-creds = data_bag('creds')
+creds = data_bag_item('creds', 'linux_user')
 
 mount 'T:' do
   action :mount
   device '\\\\storagepi.tim.haus\\Completed Torrents'
-  username creds['linux_user']['username']
-  password creds['linux_user']['pass']
+  username creds['username']
+  #password creds['pass']
 end
 
 mount 'U:' do
   action :mount
   device '\\\\storagepi.tim.haus\\Torrent Drop'
-  username creds['linux_user']['username']
-  password creds['linux_user']['pass']
+  username creds['username']
+  #password creds['pass']
 end
