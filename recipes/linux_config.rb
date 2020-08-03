@@ -18,7 +18,7 @@ motd = <<~EOH
 
   EOH
 
-if (node['packages'].keys.include? 'bind9') || (node['packages'].keys.include? 'bind')
+if (::File.exist?('/lib/systemd/system/bind9.service'))
   motd += <<~EOH
     The Bind9 (DNS) config is at /etc/bind/
   EOH
