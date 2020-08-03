@@ -16,4 +16,6 @@ run_list 'timhaus_base::default'
 cookbook 'timhaus_base', path: '.'
 
 # Cookbook dependencies
-cookbook 'chef-client', '~> 11.4.0', :supermarket
+cookbook 'chef-client', '~> 11.5.0', :supermarket
+cookbook 'audit', '~> 9.1.0', :supermarket
+cookbook 'chocolatey', '~> 2.0.1', :supermarket
