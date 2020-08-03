@@ -27,3 +27,19 @@ end
 file '/etc/motd' do
   content motd
 end
+
+# Copy our docker service settings and then reset
+cookbook_file '/lib/systemd/system/docker.service' do
+  source 'docker.service'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+  notifies :reload, 'service[docker service]', :immediately
+  notifies :restart, 'service[docker service]', :immediately
+end
+
+service 'docker service' do
+  service_name 'docker'
+  action :nothing
+end
