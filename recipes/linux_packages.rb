@@ -3,6 +3,7 @@ package 'nfs-common'
 package 'portmap'
 package 'vim'
 package 'figlet'
+package 'docker'
 
 # Downloads and installs this block if it's a Raspbian system
 # if node.platform? 'raspbian'
