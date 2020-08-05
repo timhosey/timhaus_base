@@ -35,8 +35,14 @@ cookbook_file '/lib/systemd/system/docker.service' do
   group 'root'
   mode '0755'
   action :create
+  notifies :run, 'bash[reload daemon]', :immediately
   notifies :reload, 'service[docker service]', :immediately
   notifies :restart, 'service[docker service]', :immediately
+end
+
+bash 'reload daemon' do
+  code 'systemctl daemon-reload'
+  action :nothing
 end
 
 service 'docker service' do
