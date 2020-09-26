@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Cookstyle') {
       steps {
-        sh 'docker exec -it chef/chefworkstation cookstyle .'
+        sh 'docker exec -it -v .:/files chef/chefworkstation cookstyle /files'
       }
     }
 
