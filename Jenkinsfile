@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh 'curl -L https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation'
+        sh '''apt-get install -y sudo
+curl -L https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation'''
       }
     }
 
