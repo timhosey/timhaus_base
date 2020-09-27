@@ -7,7 +7,10 @@ when 'raspbian', 'ubuntu', 'debian'
   default['chef_client']['cron']['minute'] = '0,30'
   default['chef_client']['cron']['hour'] = '*'
   default['chef_client']['cron']['weekday'] = '*'
-when 'windows'
+  if platform_version > 18
+    default['chef_client']['init_style'] = 'systemd'
+  end
+  when 'windows'
   default['chef_client']['task']['frequency'] = 'minute'
   default['chef_client']['task']['frequency_modifier'] = node['chef_client']['interval'].to_i / 60
 end
