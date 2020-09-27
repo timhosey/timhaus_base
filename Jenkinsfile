@@ -9,7 +9,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'cookstyle .'
-        sh 'sudo kitchen test'
+        sh 'kitchen test'
       }
     }
 
