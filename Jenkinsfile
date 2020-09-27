@@ -18,10 +18,12 @@ pipeline {
       steps {
         sh 'chef install'
         sh 'chef push prod'
-        POLICIES = sh (
+        script {
+          POLICIES = sh (
             script: "knife search node 'policy_name:timhaus_base AND policy_group:prod'",
             returnStdout: true
-        ).split('\n')
+          ).trim().split('\n')
+        }
         echo_all(POLICIES)
       }
     }
