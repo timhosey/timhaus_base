@@ -8,12 +8,12 @@ include_recipe 'chef-client::config'
 
 case node['platform']
 when 'raspbian', 'ubuntu'
-  unless ENV['TEST_KITCHEN']
-    include_recipe 'chef-client::default'
-  end
   include_recipe 'timhaus_base::linux_packages'
   include_recipe 'timhaus_base::linux_config'
-  include_recipe 'timhaus_base::linux_mount'
+  unless ENV['TEST_KITCHEN']
+    include_recipe 'chef-client::default'
+    include_recipe 'timhaus_base::linux_mount'
+  end
 when 'mac_os_x'
   include_recipe 'chef-client::cron'
 
