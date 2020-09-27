@@ -1,3 +1,6 @@
+# Updates APT for Ubuntu/Raspbian
+apt_update
+
 # Installs needed packages
 package 'nfs-common'
 package 'portmap'
