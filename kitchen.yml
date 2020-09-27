@@ -1,6 +1,9 @@
 ---
 driver:
-  name: vagrant
+  name: dokken
+  privileged: true
+  chef_version: <%= ENV['CHEF_VERSION'] || 'current' %>
+  chef_license: accept-no-persist
 
 ## The forwarded_port port feature lets you connect to ports on the VM guest via
 ## localhost on the host.
@@ -9,8 +12,12 @@ driver:
 #  network:
 #    - ["forwarded_port", {guest: 80, host: 8080}]
 
+transport:
+  name: dokken
+
 provisioner:
-  name: chef_zero
+  name: dokken
+  deprecations_as_errors: true
 
   ## product_name and product_version specifies a specific Chef product and version to install.
   ## see the Chef documentation for more details: https://docs.chef.io/config_yml_kitchen.html
