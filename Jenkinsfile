@@ -11,5 +11,14 @@ pipeline {
         sh 'kitchen test'
       }
     }
+    stage('Deploy') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'chef install'
+        sh 'chef push dev'
+      }
+    }
   }
 }
