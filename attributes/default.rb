@@ -10,7 +10,7 @@ when 'raspbian', 'ubuntu', 'debian'
   if platform_version > 18
     default['chef_client']['init_style'] = 'systemd'
   end
-  when 'windows'
+when 'windows'
   default['chef_client']['task']['frequency'] = 'minute'
   default['chef_client']['task']['frequency_modifier'] = node['chef_client']['interval'].to_i / 60
 end
