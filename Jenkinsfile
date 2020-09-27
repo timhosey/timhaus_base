@@ -20,7 +20,7 @@ pipeline {
         sh 'chef push prod'
         script {
           POLICIES = sh (
-            script: "knife search node 'policy_name:timhaus_base AND policy_group:prod'",
+            script: "/opt/chef-workstation/bin/knife search node 'policy_name:timhaus_base AND policy_group:prod'",
             returnStdout: true
           ).trim().split('\n')
         }
