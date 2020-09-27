@@ -17,8 +17,20 @@ pipeline {
       }
       steps {
         sh 'chef install'
-        sh 'chef push dev'
+        sh 'chef push prod'
+        POLICIES = sh (
+            script: "knife search node 'policy_name:timhaus_base AND policy_group:prod'",
+            returnStdout: true
+        ).split('\n')
+        echo_all(POLICIES)
       }
     }
   }
+}
+
+@NonCPS // has to be NonCPS or the build breaks on the call to .each
+def echo_all(list) {
+    list.each { item ->
+        echo "Node: ${item}"
+    }
 }
