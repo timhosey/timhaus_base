@@ -16,8 +16,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        chef install
-        chef push dev
+        sh 'chef install'
+        sh 'chef push dev'
       }
     }
   }
