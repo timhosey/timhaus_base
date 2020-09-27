@@ -20,19 +20,24 @@ pipeline {
         sh 'chef push prod'
         script {
           POLICIES = sh (
-            script: "/opt/chef-workstation/bin/knife search node 'policy_name:timhaus_base AND policy_group:prod'",
+            script: "/opt/chef-workstation/bin/knife node list",
             returnStdout: true
           ).trim().split('\n')
         }
-        echo_all(POLICIES)
+        run_all(POLICIES)
+
       }
     }
   }
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
-def echo_all(list) {
+def run_all(list) {
     list.each { item ->
-        echo "Node: ${item}"
+        printWithNoTrace "ssh ${PI_USER}:${PI_PASS}@${item}.tim.haus '( sudo chef-client )'"
     }
+}
+
+def printWithNoTrace(cmd) {
+  steps.sh (script: '#!/bin/sh -e\n'+ cmd, returnStdout: true)
 }
