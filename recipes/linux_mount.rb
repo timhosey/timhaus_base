@@ -7,7 +7,7 @@ directory '/disks' do
 end
 
 # If we're not storagepi, then we're mounting it
-unless node['name'] = 'storagepi' && ENV['TEST_KITCHEN']
+unless node['name'] == 'storagepi' && ENV['TEST_KITCHEN']
   directory '/disks/Torrents' do
     owner 'pi'
     group 'pi'
