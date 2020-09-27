@@ -38,7 +38,7 @@ cookbook_file '/lib/systemd/system/docker.service' do
   notifies :run, 'bash[reload daemon]', :immediately
   notifies :reload, 'service[docker service]', :immediately
   notifies :restart, 'service[docker service]', :immediately
-  only_if { node['packages'].keys.include? "docker" }
+  only_if { node['packages'].keys.include? 'docker' }
 end
 
 bash 'reload daemon' do
