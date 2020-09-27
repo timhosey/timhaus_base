@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Test') {
       when {
-        branch 'master'
+        expression { env.CHANGE_ID ==~ /.*/ }
       }
       steps {
         sh 'cookstyle .'
