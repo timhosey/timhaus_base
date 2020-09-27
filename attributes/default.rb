@@ -4,11 +4,10 @@ default['chef_client']['interval'] = 1800
 
 case node['platform']
 when 'raspbian', 'ubuntu', 'debian'
-  default['chef_client']['cron']['minute'] = '0,30'
-  default['chef_client']['cron']['hour'] = '*'
-  default['chef_client']['cron']['weekday'] = '*'
-  if platform_version > 18
-    default['chef_client']['init_style'] = 'systemd'
+  if !ENV['TEST_KITCHEN']
+    default['chef_client']['cron']['minute'] = '0,30'
+    default['chef_client']['cron']['hour'] = '*'
+    default['chef_client']['cron']['weekday'] = '*'
   end
 when 'windows'
   default['chef_client']['task']['frequency'] = 'minute'
