@@ -4,9 +4,11 @@ default['chef_client']['interval'] = 1800
 
 case node['platform']
 when 'raspbian', 'ubuntu', 'debian'
-  default['chef_client']['cron']['minute'] = '0,30'
-  default['chef_client']['cron']['hour'] = '*'
-  default['chef_client']['cron']['weekday'] = '*'
+  if platform_version < 20
+    default['chef_client']['cron']['minute'] = '0,30'
+    default['chef_client']['cron']['hour'] = '*'
+    default['chef_client']['cron']['weekday'] = '*'
+  end
 when 'windows'
   default['chef_client']['task']['frequency'] = 'minute'
   default['chef_client']['task']['frequency_modifier'] = node['chef_client']['interval'].to_i / 60
