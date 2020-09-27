@@ -4,7 +4,7 @@ default['chef_client']['interval'] = 1800
 
 case node['platform']
 when 'raspbian', 'ubuntu', 'debian'
-  if !ENV['TEST_KITCHEN']
+  unless ENV['TEST_KITCHEN']
     default['chef_client']['cron']['minute'] = '0,30'
     default['chef_client']['cron']['hour'] = '*'
     default['chef_client']['cron']['weekday'] = '*'
