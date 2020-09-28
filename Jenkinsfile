@@ -39,8 +39,9 @@ def run_all(list) {
         try {
           runOutput = sh (script: "/opt/chef-workstation/bin/knife ssh ${item} 'sudo chef-client' -x ${PI_USER} -P ${PI_PASS}", trturnStdout: true).trim()
           echo runOutput
-        } catch (Exception e) {
-          echo "The run failed. ${e.getMessage()}"
+        } catch (e) {
+          echo 'The run failed.'
+          echo e.getMessage()
         }
       }
     }
