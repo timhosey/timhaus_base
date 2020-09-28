@@ -34,8 +34,15 @@ pipeline {
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
 def run_all(list) {
     list.each { item ->
-      echo "Chef-Client Run for ${PI_USER}@${item}.tim.haus"
-      printWithNoTrace "/opt/chef-workstation/bin/knife ssh ${item} 'sudo chef-client' -x ${PI_USER} -P ${PI_PASS}"
+      echo "Chef-Client Run for ${PI_USER}@${item}.tim.haus..."
+      script {
+        try {
+          runOutput = sh (script: "/opt/chef-workstation/bin/knife ssh ${item} 'sudo chef-client' -x ${PI_USER} -P ${PI_PASS}", trturnStdout: true).trim()
+          echo runOutput
+        } catch (Exception e) {
+          echo "The run failed. ${e.getMessage()}"
+        }
+      }
     }
 }
 
