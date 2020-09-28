@@ -50,3 +50,11 @@ service 'docker service' do
   service_name 'docker'
   action :nothing
 end
+
+# TODO: Remove me later
+file '/tmp/test' do
+  content 'test'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
