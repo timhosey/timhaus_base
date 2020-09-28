@@ -24,8 +24,8 @@ pipeline {
             returnStdout: true
           ).trim().split('\n')
         }
+        echo POLICIES
         run_all(POLICIES)
-
       }
     }
   }
