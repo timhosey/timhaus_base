@@ -35,14 +35,12 @@ pipeline {
 def run_all(list) {
     list.each { item ->
       echo "Chef-Client Run for ${PI_USER}@${item}.tim.haus..."
-      script {
-        try {
-          runOutput = sh (script: "/opt/chef-workstation/bin/knife ssh ${item} 'sudo chef-client' -x ${PI_USER} -P ${PI_PASS}", trturnStdout: true).trim()
-          echo runOutput
-        } catch (e) {
-          echo 'The run failed.'
-          echo e.getMessage()
-        }
+      try {
+        runOutput = sh (script: "/opt/chef-workstation/bin/knife ssh ${item} 'sudo chef-client' -x ${PI_USER} -P ${PI_PASS}", returnStdout: true).trim()
+        echo runOutput
+      } catch (e) {
+        echo 'The run failed.'
+        echo e.getMessage()
       }
     }
 }
