@@ -23,10 +23,9 @@ pipeline {
           POLICIES.each { item ->
             echo "Chef-Client Run for ${PI_USER}@${item}.tim.haus..."
             try {
-              runOutput = sh (script: """set +x
+              sh """set +x
               /opt/chef-workstation/bin/knife ssh ${item} 'sudo chef-client' -x ${PI_USER} -P ${PI_PASS}
-              set -x""", returnStdout: true).trim()
-              echo runOutput
+              set -x"""
             } catch (e) {
               echo 'The run failed.'
               echo e.getMessage()
