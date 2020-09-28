@@ -34,8 +34,8 @@ pipeline {
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
 def run_all(list) {
     list.each { item ->
-      echo "Chef-Client Run for ${PI_USER}:${PI_PASS}@${item}.tim.haus"
-      printWithNoTrace "ssh -o 'StrictHostKeyChecking no' ${PI_USER}:${PI_PASS}@${item}.tim.haus '( sudo chef-client )'"
+      echo "Chef-Client Run for ${PI_USER}@${item}.tim.haus"
+      printWithNoTrace "sshpass -p ${PI_PASS} -o StrictHostKeyChecking=no ${PI_USER}@${item}.tim.haus '( sudo chef-client )'"
     }
 }
 
