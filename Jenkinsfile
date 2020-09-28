@@ -35,7 +35,7 @@ pipeline {
 def run_all(list) {
     list.each { item ->
       echo "Chef-Client Run for ${PI_USER}:${PI_PASS}@${item}.tim.haus"
-      printWithNoTrace "ssh ${PI_USER}:${PI_PASS}@${item}.tim.haus '( sudo chef-client )'"
+      printWithNoTrace "ssh -o 'StrictHostKeyChecking no' ${PI_USER}:${PI_PASS}@${item}.tim.haus '( sudo chef-client )'"
     }
 }
 
